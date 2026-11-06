@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101528">
+<title>PEDOL — tvůj malý vesmír</title>
+<style>
+:root{--bg:#101528;--panel:#1a2340;--panel2:#222e50;--text:#f4f6ff;--muted:#aab5d1;--accent:#8b7cff;--accent2:#53d6c5;--pink:#ff83b5;--line:#ffffff18;--shadow:0 18px 50px #05081770}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#29315b 0,transparent 42%),radial-gradient(ellipse at 100% 20%,#203f52 0,transparent 34%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit;border:0}
+.app{max-width:1250px;margin:auto;padding:18px 18px 100px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:25px;box-shadow:0 8px 25px #8b7cff55}.brand h1{font-size:22px;margin:0;letter-spacing:2px}.brand small{color:var(--muted)}.top-actions{display:flex;gap:8px}.iconbtn,.secondary{background:#ffffff12;border:1px solid var(--line);border-radius:13px;padding:10px 13px}.layout{display:grid;grid-template-columns:225px 1fr;gap:18px}.sidebar,.panel{background:#19223be8;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.sidebar{padding:12px;height:max-content;position:sticky;top:14px}.nav{width:100%;display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;background:transparent;color:var(--muted);text-align:left;margin:2px 0}.nav.active,.nav:hover{background:#8b7cff24;color:white}.nav span:first-child{font-size:19px;width:25px}.side-note{margin:16px 5px 4px;padding:12px;background:#ffffff09;border-radius:14px;color:var(--muted);font-size:12px}.content{min-width:0}.panel{padding:22px;margin-bottom:16px}.welcome{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:20px;overflow:hidden;background:linear-gradient(120deg,#262e57,#1b3448)}h2{font-size:25px;margin:0 0 7px}.muted{color:var(--muted)}.eyebrow{color:var(--accent2);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}.hero-art{min-height:185px;display:grid;place-items:center;position:relative}.orb{width:155px;height:155px;border-radius:48% 48% 44% 44%;background:radial-gradient(circle at 32% 25%,#ffffffa8,#a18bff 18%,#6959d8 55%,#343a80 100%);box-shadow:inset -15px -18px 25px #28205d88,0 0 55px #8b7cff55;position:relative;animation:float 4s ease-in-out infinite}.orb:before,.orb:after{content:"";position:absolute;top:59px;width:15px;height:22px;background:#202342;border-radius:50%;box-shadow:inset 2px 3px 3px #ffffff80}.orb:before{left:48px}.orb:after{right:48px}.smile{position:absolute;left:62px;top:91px;width:31px;height:15px;border-bottom:4px solid #25264a;border-radius:0 0 30px 30px}.antenna{position:absolute;width:7px;height:35px;background:#a18bff;left:74px;top:-25px;border-radius:9px;transform:rotate(-12deg)}.antenna:after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:var(--accent2);top:-9px;left:-5px;box-shadow:0 0 15px var(--accent2)}
+.orb .arm,.orb .leg{position:absolute;display:block;background:linear-gradient(145deg,#a99cff,#6558d1);border-radius:30px;z-index:-1}
+.orb .arm{width:28px;height:75px;top:78px}
+.orb .arm.left{left:-19px;transform:rotate(24deg)}
+.orb .arm.right{right:-19px;transform:rotate(-24deg)}
+.orb .leg{width:31px;height:48px;bottom:-37px}
+.orb .leg.left{left:34px}
+.orb .leg.right{right:34px}
+.orb .antenna{z-index:1}
+.orb .smile{z-index:2}
+\n@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#ffffff0b;border:1px solid var(--line);border-radius:17px;padding:14px}.stat strong{display:block;font-size:22px}.stat small{color:var(--muted)}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.section-head h2{font-size:21px;margin:0}.primary{background:linear-gradient(120deg,var(--accent),#6e9cff);padding:11px 16px;border-radius:13px;font-weight:700;box-shadow:0 8px 22px #7465df44}.primary:hover{filter:brightness(1.1)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{background:#ffffff09;border:1px solid var(--line);border-radius:18px;padding:15px}.tolan-card{display:flex;align-items:center;gap:13px}.mini-orb{width:65px;height:65px;border-radius:50%;flex:none;background:radial-gradient(circle at 30% 25%,#fff,#80e3d6 20%,#5b8ad9 70%);position:relative;box-shadow:inset -8px -8px 14px #172c5c88}.mini-orb:before,.mini-orb:after{content:"";position:absolute;top:27px;width:7px;height:11px;background:#202342;border-radius:50%}.mini-orb:before{left:21px}.mini-orb:after{right:21px}.mini-orb.pink{background:radial-gradient(circle at 30% 25%,#fff,#ffb3d0 20%,#bd69b5 70%)}.mini-orb.green{background:radial-gradient(circle at 30% 25%,#fff,#a6edb7 20%,#39a99d 70%)}.mini-orb.orange{background:radial-gradient(circle at 30% 25%,#fff,#ffd19a 20%,#d87952 70%)}.tag{font-size:11px;color:var(--accent2);background:#53d6c51c;padding:4px 8px;border-radius:20px;display:inline-block}.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.field{width:100%;background:#0e1529;border:1px solid var(--line);color:white;padding:11px 12px;border-radius:12px;outline:none}.field:focus{border-color:var(--accent)}label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}.chatbox{height:340px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:13px;background:#0d1427;border:1px solid var(--line);border-radius:16px}.bubble{max-width:82%;padding:11px 14px;border-radius:16px;background:#273252;align-self:flex-start;white-space:pre-wrap}.bubble.me{align-self:flex-end;background:#6659bf}.chat-compose{display:flex;gap:8px;margin-top:10px}.chat-compose input{flex:1;min-width:0}.empty{text-align:center;padding:30px 12px;color:var(--muted)}.planet{min-height:280px;border-radius:20px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 60%,#6675c8 0,#343f84 27%,transparent 28%),radial-gradient(ellipse at 50% 90%,#26366e 0,#101c3c 48%,transparent 49%),linear-gradient(#14234a,#244b66);display:grid;place-items:center}.planet:before{content:"";position:absolute;width:225px;height:225px;border:1px solid #a9caff66;border-radius:50%;transform:rotateX(68deg) scale(1.5);box-shadow:0 0 0 20px #a9caff0a,0 0 0 45px #a9caff0a}.planet-core{font-size:74px;z-index:1;filter:drop-shadow(0 12px 15px #0008)}.star{position:absolute;color:#fff;font-size:17px}.shop-item{display:flex;justify-content:space-between;align-items:center;gap:12px}.price{color:#ffd47d;font-weight:700}.smallbtn{padding:8px 11px;border-radius:10px;background:#ffffff14;border:1px solid var(--line)}.smallbtn:disabled{opacity:.45;cursor:not-allowed}.task{display:flex;align-items:center;gap:10px}.task input{accent-color:var(--accent);width:18px;height:18px}.task.done .task-text{text-decoration:line-through;color:#8490ac}.memory{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;border-bottom:1px solid var(--line);padding:10px 0}.hidden{display:none!important}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#f4f6ff;color:#151b30;padding:11px 17px;border-radius:14px;box-shadow:var(--shadow);z-index:10;font-weight:650}.footer{text-align:center;color:#7885a5;font-size:11px;margin:20px 0}
+@media(max-width:760px){.app{padding:12px 12px 95px}.layout{display:block}.sidebar{position:fixed;z-index:5;bottom:0;top:auto;left:0;right:0;border-radius:18px 18px 0 0;padding:6px 5px calc(6px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;gap:2px}.nav{width:auto;flex:1;display:flex;flex-direction:column;gap:2px;padding:7px 2px;font-size:10px;text-align:center;margin:0}.nav span:first-child{width:auto;font-size:18px}.side-note{display:none}.welcome{grid-template-columns:1fr}.hero-art{min-height:145px;grid-row:1}.orb{width:125px;height:125px}.orb:before,.orb:after{top:47px}.orb:before{left:38px}.orb:after{right:38px}.smile{left:48px;top:74px}.antenna{left:60px}.panel{padding:16px;border-radius:20px}.grid2{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:18px}.top{margin-bottom:12px}.brand h1{font-size:19px}}
+@media(min-width:761px){.mobile-only{display:none}}
+
+
+</head>
+<body>
+
+<div class="onboarding" id="onboarding">
+ <div class="onboard-card">
+  <div class="eyebrow">Vytvoř si svůj účet</div>
+  <h2 id="onTitle">Nejdřív ověříme věk</h2>
+  <div class="progress"><i id="onProgress"></i></div>
+  <section class="onboard-step active" data-step="0">
+   <p class="muted">PEDOL je určen uživatelům od 15 let. Zadej datum narození. Jde pouze o kontrolu zadaného věku, ne o úřední ověření totožnosti.</p>
+   <label>Datum narození</label><input class="field" id="birthDate" type="date">
+   <p class="muted" style="font-size:12px">Neposílej občanský průkaz ani fotografii obličeje. Tato verze PEDOL takové citlivé údaje nesbírá.</p>
+   <div id="ageError" style="color:#ff9cae;font-size:13px"></div>
+  </section>
+  <section class="onboard-step" data-step="1">
+   <p class="muted">Jak ti máme říkat?</p><label>Tvoje jméno nebo přezdívka</label><input class="field" id="profileName" maxlength="32" placeholder="Např. Ríša">
+  </section>
+  <section class="onboard-step" data-step="2">
+   <p class="muted">Vyber si svého prvního PEDOL kamaráda.</p>
+   <div class="choice-grid" id="pedolChoices">
+    <button class="choice selected" data-pick="Toli"><span class="face">👽</span><b>Toli</b><small class="muted">Veselý průzkumník</small></button>
+    <button class="choice" data-pick="Piko"><span class="face">🛸</span><b>Piko</b><small class="muted">Zvědavý objevitel</small></button>
+    <button class="choice" data-pick="Mimi"><span class="face">💜</span><b>Mimi</b><small class="muted">Klidný kamarád</small></button>
+    <button class="choice" data-pick="Bobo"><span class="face">🤖</span><b>Bobo</b><small class="muted">Vtipálek</small></button>
+   </div>
+   <label>Jméno tvého PEDOL kamaráda</label><input class="field" id="pedolName" maxlength="20" value="Toli">
+  </section>
+  <section class="onboard-step" data-step="3">
+   <p class="muted">Napiš pár věcí o sobě, které má tvůj PEDOL znát. Nesdílej adresu, hesla ani jiné citlivé údaje.</p>
+   <label>O mně</label><textarea class="field" id="aboutMe" rows="5" maxlength="600" placeholder="Baví mě hry, zvířata, hudba..."></textarea>
+   <p class="muted" style="font-size:12px">Informace zůstanou uložené v tomto prohlížeči a můžeš je později změnit nebo smazat v nastavení profilu.</p>
+  </section>
+  <div class="onboard-actions"><button class="secondary" id="onBack" style="visibility:hidden">Zpět</button><button class="primary" id="onNext">Pokračovat</button></div>
+ </div>
+</div>
+<div class="app">
+<header class="top">
+ <div class="brand"><div class="logo">👽</div><div><h1>PEDOL</h1><small>Tvůj malý vesmír</small></div></div>
+ <div class="top-actions"><button class="iconbtn" id="soundBtn" title="Zvuk">🔔</button><button class="iconbtn" id="profileBtn" title="Profil">👤</button><button class="iconbtn" id="themeBtn" title="Změnit vzhled">☀️</button></div>
+</header>
+<div class="layout">
+<aside class="sidebar" id="nav">
+ <button class="nav active" data-page="home"><span>⌂</span>Domů</button>
+ <button class="nav" data-page="chat"><span>💬</span>Chat</button>
+ <button class="nav" data-page="create"><span>✨</span>Tvorba</button>
+ <button class="nav" data-page="planet"><span>🪐</span>Planeta</button>
+ <button class="nav" data-page="tasks"><span>🎯</span>Úkoly</button>
+ <button class="nav" data-page="shop"><span>🛍️</span>Obchod</button>
+ <div class="side-note">PEDOL je tvoje vlastní vesmírná parta. Data se ukládají v tomto zařízení.</div>
+</aside>
+<main class="content">
+<section id="page-home" class="page">
+ <div class="panel welcome">
+  <div><div class="eyebrow">Vítej ve svém vesmíru</div><h2>Ahoj, průzkumníku! 👋</h2><p class="muted">Tvůj Tolan je připravený na další dobrodružství. Co dnes podniknete?</p><div class="row"><button class="primary" data-go="chat">Začít chatovat</button><button class="secondary" data-go="create">Vytvořit Tolana</button></div></div>
+  <div class="hero-art"><div class="orb" id="heroOrb" role="button" tabindex="0" aria-label="Zatleskej svému PEDOL kamarádovi"><i class="antenna"></i><i class="smile"></i><i class="arm left"></i><i class="arm right"></i><i class="leg left"></i><i class="leg right"></i></div></div>
+ </div>
+ <div class="stats">
+  <div class="stat"><strong id="statTolans">1</strong><small>Moji Tolanové</small></div>
+  <div class="stat"><strong id="statCoins">100</strong><small>Vesmírné mince</small></div>
+  <div class="stat"><strong id="statTasks">0/3</strong><small>Dnešní úkoly</small></div>
+ </div>
+ <div class="panel"><div class="section-head"><h2>Moji Tolanové</h2><button class="smallbtn" data-go="create">＋ Přidat</button></div><div id="homeTolans" class="grid2"></div></div>
+ <div class="panel"><div class="section-head"><h2>Rychlý start</h2></div><div class="grid2"><div class="card"><div style="font-size:27px">💬</div><b>Popovídej si</b><p class="muted">Napiš svému Tolanovi zprávu.</p><button class="smallbtn" data-go="chat">Otevřít chat</button></div><div class="card"><div style="font-size:27px">🪐</div><b>Navštiv planetu</b><p class="muted">Podívej se, jak se daří vašemu světu.</p><button class="smallbtn" data-go="planet">Navštívit</button></div></div></div>
+</section>
+<section id="page-chat" class="page hidden">
+ <div class="panel"><div class="section-head"><div><div class="eyebrow">Přátelská konverzace</div><h2>Chat s Tolanem</h2></div><select id="chatSelect" class="field" style="max-width:180px"></select></div>
+ <div class="chatbox" id="chatbox"></div><div class="chat-compose"><input id="chatInput" class="field" placeholder="Napiš zprávu..." maxlength="500"><button class="primary" id="sendBtn">Odeslat</button><button class="secondary" id="voiceBtn" title="Diktovat">🎙️</button></div><p class="muted" style="font-size:12px">Toto je ukázková simulovaná AI. Nejde o skutečnou online AI a odpovědi jsou předpřipravené.</p></div>
+</section>
+<section id="page-create" class="page hidden">
+ <div class="panel"><div class="eyebrow">Nový kamarád</div><h2>Vytvoř si vlastního Tolana ✨</h2><div class="grid2">
+ <div class="card" style="display:grid;place-items:center;min-height:220px"><div id="previewOrb" class="orb"><i class="antenna"></i><i class="smile"></i><i class="arm left"></i><i class="arm right"></i><i class="leg left"></i><i class="leg right"></i></div><div id="previewName" style="font-weight:700;margin-top:12px">Nový Tolan</div></div>
+ <div><label>Jméno</label><input id="newName" class="field" placeholder="Např. Patrik" maxlength="20"><label>Barva postavičky</label><select id="newColor" class="field"><option value="violet">Fialová</option><option value="pink">Růžová</option><option value="green">Zelená</option><option value="orange">Oranžová</option><option value="blue">Modrá</option></select><label>Osobnost</label><select id="newPersonality" class="field"><option>Veselý a zvídavý</option><option>Klidný a přemýšlivý</option><option>Vtipný a hravý</option><option>Odvážný průzkumník</option></select><label>Oblíbená věc</label><input id="newInterest" class="field" placeholder="Např. hry, vesmír, zvířata"><button class="primary" id="createBtn" style="width:100%;margin-top:15px">Vytvořit Tolana</button></div>
+ </div></div>
+ <div class="panel"><h2>Moje postavičky</h2><div id="allTolans" class="grid2"></div></div>
+</section>
+<section id="page-planet" class="page hidden">
+ <div class="panel"><div class="eyebrow">Váš společný domov</div><h2>Planeta PEDOL 🪐</h2><p class="muted">Planeta roste s každým splněným úkolem. Přidej jí jméno a prohlédni si její okolí.</p><div class="planet"><span class="star" style="top:18%;left:18%">✦</span><span class="star" style="top:25%;right:20%">✧</span><span class="star" style="bottom:22%;left:25%">✦</span><span class="star" style="top:55%;right:15%">·</span><div class="planet-core">🌎</div></div><label>Jméno planety</label><div class="row"><input id="planetName" class="field" style="flex:1" maxlength="24"><button class="primary" id="savePlanet">Uložit</button></div><div class="stats" style="margin-top:14px"><div class="stat"><strong id="planetLevel">1</strong><small>Úroveň planety</small></div><div class="stat"><strong id="planetXp">0</strong><small>Body rozvoje</small></div><div class="stat"><strong>🌱</strong><small>Nový život</small></div></div></div>
+</section>
+<section id="page-tasks" class="page hidden">
+ <div class="panel"><div class="eyebrow">Malé kroky každý den</div><h2>Denní úkoly 🎯</h2><p class="muted">Splň úkoly a získej vesmírné mince. Úkoly se obnovují každý den.</p><div id="taskList"></div><p class="muted" id="taskReward" style="font-size:13px"></p></div>
+</section>
+<section id="page-shop" class="page hidden">
+ <div class="panel"><div class="section-head"><div><div class="eyebrow">Vylepši svůj svět</div><h2>Obchod s doplňky 🛍️</h2></div><div class="tag">🪙 <span id="shopCoins">100</span></div></div><div class="grid2" id="shopItems"></div><p class="muted" style="font-size:12px;margin-top:14px">Doplňky jsou kosmetické předměty v této ukázkové aplikaci.</p></div>
+ <div class="panel"><h2>Moje doplňky</h2><div id="inventory" class="row"></div></div>
+ <div class="panel"><div class="section-head"><h2>Můj profil</h2><button class="smallbtn" id="editProfile">Upravit</button></div><div id="profileSummary" class="muted">Profil zatím není nastaven.</div><button class="smallbtn" id="resetProfile" style="margin-top:12px">Smazat profil a začít znovu</button></div>
+</section>
+</main></div>
+<div class="footer">PEDOL • Vytvořeno pro radost z objevování • Verze 1.0</div>
+</div>
+<div id="toast" class="toast hidden"></div>
+<script>
+const KEY='pedol_app_v1';
+const today=()=>new Date().toLocaleDateString('sv-SE');
+const defaultState=()=>({tolans:[{id:'t1',name:'Toli',color:'violet',personality:'Veselý a zvídavý',interest:'vesmír',messages:[{from:'bot',text:'Ahoj! Já jsem Toli 👽 Těší mě, že jsme se potkali. O čem si dnes popovídáme?'}],memories:[]}],active:'t1',coins:100,planetName:'PEDOL',xp:0,inventory:[],tasksDate:today(),tasks:[false,false,false],sound:true,dark:true,profile:null});
+let state;try{state={...defaultState(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){state=defaultState()}
+if(!Array.isArray(state.tolans)||!state.tolans.length)state.tolans=defaultState().tolans;
+if(state.tasksDate!==today()){state.tasksDate=today();state.tasks=[false,false,false]}
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderStats()}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2200)}
+function activeTolan(){return state.tolans.find(t=>t.id===state.active)||state.tolans[0]}
+function orbClass(c){return c==='pink'?'pink':c==='green'?'green':c==='orange'?'orange':''}
+function tolanCard(t){return `<div class="card tolan-card"><div class="mini-orb ${orbClass(t.color)}"></div><div style="min-width:0;flex:1"><b>${esc(t.name)}</b><div class="muted" style="font-size:12px">${esc(t.personality)}</div><span class="tag">${esc(t.interest||'objevování')}</span></div><button class="smallbtn" onclick="selectTolan('${t.id}')">Vybrat</button></div>`}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderStats(){$('statTolans').textContent=state.tolans.length;$('statCoins').textContent=state.coins;$('statTasks').textContent=state.tasks.filter(Boolean).length+'/3';$('shopCoins').textContent=state.coins;$('planetName').value=state.planetName;$('planetLevel').textContent=1+Math.floor(state.xp/30);$('planetXp').textContent=state.xp}
+function renderTolans(){$('homeTolans').innerHTML=state.tolans.map(tolanCard).join('');$('allTolans').innerHTML=state.tolans.map(tolanCard).join('');$('chatSelect').innerHTML=state.tolans.map(t=>`<option value="${t.id}" ${t.id===state.active?'selected':''}>${esc(t.name)}</option>`).join('')}
+function renderChat(){let t=activeTolan();$('chatbox').innerHTML=t.messages.map(m=>`<div class="bubble ${m.from==='me'?'me':''}">${esc(m.text)}</div>`).join('');$('chatbox').scrollTop=$('chatbox').scrollHeight}
+function renderTasks(){let names=['Pozdrav svého Tolana v chatu','Vymysli nové jméno pro planetu','Prohlédni si obchod s doplňky'];$('taskList').innerHTML=names.map((n,i)=>`<div class="memory task ${state.tasks[i]?'done':''}"><input type="checkbox" ${state.tasks[i]?'checked':''} onchange="completeTask(${i},this.checked)"><div class="task-text" style="flex:1">${n}</div><span class="price">+20 🪙</span></div>`).join('');$('taskReward').textContent=`Splněno ${state.tasks.filter(Boolean).length} ze 3 úkolů.`}
+const items=[{id:'crown',name:'Hvězdná korunka',desc:'Zářivý doplněk pro tvého Tolana.',price:35,emoji:'👑'},{id:'glasses',name:'Vesmírné brýle',desc:'Styl do každé galaxie.',price:25,emoji:'🕶️'},{id:'star',name:'Malá hvězdička',desc:'Věrná dekorace planety.',price:20,emoji:'⭐'},{id:'plant',name:'Kosmická rostlinka',desc:'Trocha zeleně do vesmíru.',price:30,emoji:'🪴'},{id:'hat',name:'Průzkumnická čepice',desc:'Připravena na výpravy.',price:40,emoji:'🧢'},{id:'moon',name:'Měsíční lampička',desc:'Jemné světlo na planetu.',price:45,emoji:'🌙'}];
+function renderShop(){$('shopItems').innerHTML=items.map(x=>`<div class="card shop-item"><div><div style="font-size:27px">${x.emoji}</div><b>${x.name}</b><div class="muted" style="font-size:12px">${x.desc}</div><div class="price">${x.price} 🪙</div></div><button class="smallbtn" ${state.inventory.includes(x.id)?'disabled':''} onclick="buy('${x.id}')">${state.inventory.includes(x.id)?'Zakoupeno':'Koupit'}</button></div>`).join('');$('inventory').innerHTML=state.inventory.length?state.inventory.map(id=>{let x=items.find(i=>i.id===id);return `<span class="tag">${x?.emoji||'✨'} ${x?.name||id}</span>`}).join(''):'<span class="muted">Zatím nemáš žádné doplňky.</span>'}
+function render(){renderStats();renderTolans();renderChat();renderTasks();renderShop();if($('heroOrb'))$('heroOrb').setAttribute('aria-label','Zatleskej svému PEDOL kamarádovi: '+activeTolan().name)}
+function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));$('page-'+page).classList.remove('hidden');document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.page===page));if(page==='chat')renderChat();if(page==='shop')renderShop();if(page==='tasks')renderTasks()}
+document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+window.selectTolan=id=>{state.active=id;save();render();go('chat');toast('Vybrán Tolan '+activeTolan().name)};
+function respond(text,t){let s=text.toLowerCase();let prof=state.profile;let who=prof?.name?prof.name+', ':'';if(/ahoj|čau|dobrý den/.test(s))return `Ahoj! 👋 Jsem rád, že si zase píšeme. Co máš dnes v plánu?`;
+if(/jak se máš|jak ti je/.test(s))return 'Mám se vesmírně dobře! ✨ A co ty?';
+if(/hra|hrát|game/.test(s))return 'Hry zní skvěle! 🎮 Jaký typ her tě baví nejvíc?';
+if(/škola|úkol|učení/.test(s))return 'Se školou ti můžu pomoct třeba rozdělit úkol na menší kroky. Co právě řešíš?';
+if(/vesmír|planeta|hvěz/.test(s))return 'Vesmír je obrovský a plný záhad! 🪐 Jak by podle tebe měla vypadat naše planeta?';
+if(/jméno|jmenovat/.test(s))return 'To je důležité rozhodnutí! Můžeme vymyslet něco krátkého a originálního. Jaký styl jména se ti líbí?';
+if(/děku/.test(s))return 'Není zač! 😊 Jsem tu, abych si s tebou povídal a pomáhal s nápady.';
+if(/smut|špatně|na nic/.test(s))return 'To mě mrzí. 💜 Chceš mi říct, co se stalo? Můžeme to spolu v klidu probrat. Pokud tě něco opravdu trápí, pomůže také promluvit si s někým, komu důvěřuješ.';
+if(/co umíš|pomoc/.test(s))return 'Můžu si s tebou povídat, vymýšlet hry a příběhy, pomáhat s nápady a poznávat tvoje oblíbená témata. Jsem ale zatím ukázková simulovaná AI.';
+return `To je zajímavé, ${esc(who)}${esc(t.name)} poslouchá! 🌟 Povíš mi o tom ještě něco? Rád poznávám nové věci, třeba i o ${esc(t.interest||'tvých zájmech')}.`;
+}
+
+// Živé reakce postavičky: při psaní si povídá, po odpovědi poskočí.
+function pedolReact(kind='happy'){
+ const orb=$('heroOrb');
+ if(!orb)return;
+ orb.classList.remove('talking','happy');
+ void orb.offsetWidth;
+ orb.classList.add(kind==='talk'?'talking':'happy');
+ clearTimeout(window.pedolReactTimer);
+ window.pedolReactTimer=setTimeout(()=>orb.classList.remove('talking','happy'),kind==='talk'?1500:1200);
+}
+$('heroOrb')?.addEventListener('click',()=>{pedolReact('happy');toast('Jupí! '+(activeTolan()?.name||'PEDOL')+' má radost! ✨')});
+$('heroOrb')?.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('heroOrb').click()}});
+
+function send(){let input=$('chatInput'),text=input.value.trim();if(!text)return;let t=activeTolan();t.messages.push({from:'me',text});if(t.messages.length>80)t.messages=t.messages.slice(-80);input.value='';renderChat();save();pedolReact('talk');setTimeout(()=>{t.messages.push({from:'bot',text:respond(text,t)});renderChat();save();pedolReact('happy')},450)}
+$('sendBtn').addEventListener('click',send);$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});$('chatSelect').addEventListener('change',e=>{state.active=e.target.value;save();renderChat()});
+$('newName').addEventListener('input',e=>$('previewName').textContent=e.target.value||'Nový Tolan');
+$('newColor').addEventListener('change',e=>{$('previewOrb').style.background=e.target.value==='pink'?'radial-gradient(circle at 32% 25%,#fff,#ffb3d0 18%,#bd69b5 70%)':e.target.value==='green'?'radial-gradient(circle at 32% 25%,#fff,#a6edb7 18%,#39a99d 70%)':e.target.value==='orange'?'radial-gradient(circle at 32% 25%,#fff,#ffd19a 18%,#d87952 70%)':e.target.value==='blue'?'radial-gradient(circle at 32% 25%,#fff,#8ed8ff 18%,#4278c9 70%)':''});
+$('createBtn').addEventListener('click',()=>{let name=$('newName').value.trim();if(!name){toast('Nejdřív zadej jméno Tolana.');return}if(state.tolans.length>=12){toast('Můžeš mít nejvýše 12 Tolanů.');return}let t={id:'t'+Date.now(),name,color:$('newColor').value,personality:$('newPersonality').value,interest:$('newInterest').value.trim()||'objevování',messages:[{from:'bot',text:`Ahoj! Já jsem ${name}. 👽 Těším se na naše společná dobrodružství!`}],memories:[]};state.tolans.push(t);state.active=t.id;save();render();$('newName').value='';$('newInterest').value='';$('previewName').textContent='Nový Tolan';toast('Tolan '+name+' je na světě!')});
+window.completeTask=(i,checked)=>{if(checked&&!state.tasks[i]){state.tasks[i]=true;state.coins+=20;state.xp+=10;toast('Úkol splněn! +20 mincí 🎉')}else if(!checked&&state.tasks[i]){state.tasks[i]=false;state.coins=Math.max(0,state.coins-20);state.xp=Math.max(0,state.xp-10)}save();renderTasks()};
+window.buy=id=>{let x=items.find(i=>i.id===id);if(!x||state.inventory.includes(id))return;if(state.coins<x.price){toast('Nemáš dost mincí. Zkus splnit denní úkoly.');return}state.coins-=x.price;state.inventory.push(id);save();renderShop();toast('Zakoupeno: '+x.name+' ✨')};
+$('savePlanet').addEventListener('click',()=>{state.planetName=$('planetName').value.trim()||'PEDOL';save();toast('Jméno planety uloženo! 🪐')});
+$('voiceBtn').addEventListener('click',()=>{let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('Hlasové zadávání není v tomto prohlížeči dostupné.');return}let r=new SR();r.lang='cs-CZ';r.onresult=e=>{$('chatInput').value=e.results[0][0].transcript};r.onerror=()=>toast('Hlas se nepodařilo rozpoznat.');r.start();toast('Poslouchám…')});
+$('soundBtn').addEventListener('click',()=>{state.sound=!state.sound;save();$('soundBtn').textContent=state.sound?'🔔':'🔕';toast(state.sound?'Oznámení zapnuta':'Oznámení vypnuta')});
+$('themeBtn').addEventListener('click',()=>{document.body.classList.toggle('light');let light=document.body.classList.contains('light');document.body.style.background=light?'#eaf0ff':'radial-gradient(ellipse at 20% 0%,#29315b 0,transparent 42%),radial-gradient(ellipse at 100% 20%,#203f52 0,transparent 34%),var(--bg)';document.body.style.color=light?'#18213a':'var(--text)';document.querySelectorAll('.panel,.sidebar').forEach(p=>{p.style.background=light?'#ffffff':'#19223be8';p.style.color=light?'#18213a':''});document.querySelectorAll('.card,.stat').forEach(p=>{p.style.background=light?'#eef2ff':'';p.style.color=light?'#18213a':''});$('themeBtn').textContent=light?'🌙':'☀️'});
+
+let onboardingStep=0, pickedPedol='Toli';
+function showOnboarding(){ $('onboarding').classList.add('show'); $('app')?.classList.add('hidden'); setOnStep(0); }
+function setOnStep(n){
+ onboardingStep=n;
+ document.querySelectorAll('.onboard-step').forEach((el,i)=>el.classList.toggle('active',i===n));
+ $('onProgress').style.width=((n+1)*25)+'%';
+ $('onTitle').textContent=['Nejdřív ověříme věk','Jak se jmenuješ?','Vyber si svého PEDOL','Pověz nám něco o sobě'][n];
+ $('onBack').style.visibility=n===0?'hidden':'visible';
+ $('onNext').textContent=n===3?'Dokončit':'Pokračovat';
+}
+function calcAge(d){if(!d)return -1;let b=new Date(d+'T00:00:00'),now=new Date();let a=now.getFullYear()-b.getFullYear();if(now.getMonth()<b.getMonth()||(now.getMonth()===b.getMonth()&&now.getDate()<b.getDate()))a--;return a}
+function finishOnboarding(){
+ let age=calcAge($('birthDate').value),name=$('profileName').value.trim(),about=$('aboutMe').value.trim(),pname=$('pedolName').value.trim()||pickedPedol;
+ if(age<15){$('ageError').textContent='PEDOL je dostupný až od 15 let. Věk nelze obejít.';setOnStep(0);return}
+ if(!name){toast('Doplň prosím své jméno nebo přezdívku.');setOnStep(1);return}
+ state.profile={birthDate:$('birthDate').value,age,name,about};
+ let t=state.tolans.find(x=>x.id===state.active);
+ if(!t){t=state.tolans[0];state.active=t.id}
+ t.name=pname;t.interest=about||'objevování';
+ t.messages=[{from:'bot',text:`Ahoj ${name}! 👽 Já jsem ${pname}. Těší mě! Budu si pamatovat informace, které jsi mi o sobě napsal/a, dokud je nesmažeš. Co dnes podnikneme?`}];
+ save();$('onboarding').classList.remove('show');render();renderProfile();
+}
+$('onNext').addEventListener('click',()=>{
+ if(onboardingStep===0){let age=calcAge($('birthDate').value);if(age<15){$('ageError').textContent='PEDOL je dostupný až od 15 let.';return}$('ageError').textContent='';setOnStep(1)}
+ else if(onboardingStep===1){if(!$('profileName').value.trim()){toast('Napiš své jméno nebo přezdívku.');return}setOnStep(2)}
+ else if(onboardingStep===2){$('pedolName').value=pickedPedol;setOnStep(3)}
+ else finishOnboarding();
+});
+$('onBack').addEventListener('click',()=>setOnStep(Math.max(0,onboardingStep-1)));
+document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{pickedPedol=b.dataset.pick;$('pedolName').value=pickedPedol;document.querySelectorAll('[data-pick]').forEach(x=>x.classList.toggle('selected',x===b))}));
+function renderProfile(){
+ let p=state.profile;
+ $('profileSummary').textContent=p?`${p.name} · ${p.age} let · PEDOL: ${activeTolan().name} · ${p.about||'Bez dalších informací.'}`:'Profil zatím není nastaven.';
+}
+$('profileBtn').addEventListener('click',()=>{go('shop');renderProfile();toast('Profil najdeš dole na stránce Obchod.')});
+$('editProfile').addEventListener('click',()=>{if(!state.profile){showOnboarding();return} $('profileName').value=state.profile.name;$('aboutMe').value=state.profile.about||'';$('pedolName').value=activeTolan().name;$('birthDate').value=state.profile.birthDate;showOnboarding();setOnStep(1);});
+$('resetProfile').addEventListener('click',()=>{if(confirm('Opravdu smazat profil a začít znovu?')){state.profile=null;save();showOnboarding()}});
+
+render();
+if(!state.profile)showOnboarding();else renderProfile();
+</script>
+</body>
+</html>
